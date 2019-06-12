@@ -105,6 +105,12 @@
     <Compile Include="Screens\WinScreen.Designer.cs">
       <DependentUpon>WinScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoseScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoseScreen.Designer.cs">
+      <DependentUpon>LoseScreen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Screens\OrignalForm.resx">
       <DependentUpon>OrignalForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\WinScreen.resx">
       <DependentUpon>WinScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoseScreen.resx">
+      <DependentUpon>LoseScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

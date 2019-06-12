@@ -47,6 +47,20 @@ namespace Something_Something_Wizards
             dk.name = OrignalForm.name;
             lk.name = OrignalForm.name;
             mega.name = OrignalForm.name;
+            //Resets Health
+            dk.health = 12;
+            lk.health = 10;
+            mega.health = 10;
+            aiDK.health = 20;
+            aiMega.health = 20;
+            aiLK.health = 20;
+            //Resets Mana
+            dk.mana = 10;
+            lk.mana = 10;
+            mega.mana = 10;
+            aiDK.mana = 10;
+            aiMega.mana = 10;
+            aiLK.mana = 10;
         }
         //Used by player to decide presented options
         public void GameScreen_KeyPress(object sender, KeyPressEventArgs e)
@@ -208,10 +222,10 @@ namespace Something_Something_Wizards
                             }
                             break;
                         case 3:
-                            aiMega.health -= 9;
+                            aiMega.health -= 10;
                             switch(OrignalForm.player_Charcter)
                             {
-                                case 1:
+                            case 1:
                             dk.mana -= 10;
                             break;
                         case 2:
@@ -381,7 +395,7 @@ namespace Something_Something_Wizards
                     }
                     break;
                 case 2:
-                    switch (attackSelector)
+                    switch (aiAttackIndicator)
                     {
                         case 1:
                             mega.health -= 3;
@@ -447,7 +461,7 @@ namespace Something_Something_Wizards
                     break;
                 case 3:
                     {
-                        switch (attackSelector)
+                        switch (aiAttackIndicator)
                         {
                             case 1:
                                 lk.health -= 3;
@@ -525,6 +539,7 @@ namespace Something_Something_Wizards
                 PlayerDecidedAttacks();
                 attackPhase = false;
                 possibleAttacks = false;
+                aiTurn = true;
                 switch (OrignalForm.player_Charcter)
                 {
                     case 1:
@@ -540,6 +555,7 @@ namespace Something_Something_Wizards
             }
             else
             {
+                aiTurn = false;
                 AiDecidedAttacks();                
                 switch (aiSelectedCharcter)
                 {
@@ -554,17 +570,28 @@ namespace Something_Something_Wizards
                         break;
                 }
             }
-            aiTurn = true;
+            
             timer = 0;
             attackSelector = 0;
             aiAttackIndicator = 0;
             if (aiMega.health <= 0 || aiDK.health <= 0 || aiLK.health <= 0)
             {
+                aiTurn = false;
                 Form f = this.FindForm();
                 WinScreen g = new WinScreen();
                 f.Controls.Remove(this);
                 f.Controls.Add(g);
                 g.Location = new Point((this.Width - g.Width) / 2, (this.Height - g.Height) / 2);
+            }
+            if(mega.health <= 0 || dk.health <= 0 || lk.health <= 0)
+            {
+                aiTurn = false;
+                Form z = this.FindForm();
+                LoseScreen g = new LoseScreen();
+                z.Controls.Remove(this);
+                z.Controls.Add(g);
+                g.Location = new Point((this.Width - g.Width) / 2, (this.Height - g.Height) / 2);
+                this.Dispose();
             }
         }
 
@@ -574,6 +601,45 @@ namespace Something_Something_Wizards
             switch (OrignalForm.player_Charcter)
             {
                 case 1:
+                    if (dk.health <= 12 && dk.health > 10)
+                    {
+                        switch (aiSelectedCharcter)
+                        {
+                            case 1:
+                                if (aiDK.mana >=2 )
+                                {
+                                    aiAttackIndicator = 1;
+                                    aiDK.DeathEyes(e, dk);
+                                }
+                                else
+                                {
+                                    notEnoughMana(e);
+                                }
+                                break;
+                            case 2:
+                                if (aiMega.mana >= 2)
+                                {
+                                    aiAttackIndicator = 1;
+                                    aiMega.explosion(e, mega);
+                                }
+                                else
+                                {
+                                    notEnoughMana(e);
+                                }
+                                break;
+                            case 3:
+                                if (aiLK.mana >= 2)
+                                {
+                                    aiAttackIndicator = 1;
+                                    aiLK.Sparks(e, lk);
+                                }
+                                else
+                                {
+                                    notEnoughMana(e);
+                                }
+                                break;
+                        }
+                    }
                     if (dk.health <= 10)
                     {
                         switch (aiSelectedCharcter)

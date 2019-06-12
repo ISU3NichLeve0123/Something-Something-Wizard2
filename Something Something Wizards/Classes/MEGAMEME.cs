@@ -79,7 +79,7 @@ namespace Something_Something_Wizards
         }
             public void explosion(PaintEventArgs e, MEGAMEME mega)
         {
-            objectX += 4;
+            if (GameScreen.aiTurn == true) { objectX -= 4; } else { objectX += 4; }
             e.Graphics.DrawString(mega.name + " used explosion!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0);
             e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, mega.objectX, mega.objectY, mega.objectSize, mega.objectSize);
             GameScreen.AttackEndDetails();
@@ -87,7 +87,7 @@ namespace Something_Something_Wizards
 
         public void Explosion(PaintEventArgs e, MEGAMEME mega)
         {
-            objectX += 4;
+            if (GameScreen.aiTurn == true) { objectX -= 4; } else { objectX += 4; }
             e.Graphics.DrawString(mega.name + " used Explosion!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0);
             e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, mega.objectX, mega.objectY, mega.objectSize, mega.objectSize);
             GameScreen.AttackEndDetails();
@@ -105,7 +105,7 @@ namespace Something_Something_Wizards
 
         public void Baka(PaintEventArgs e, MEGAMEME mega)
         {
-            objectX += 4;
+            if (GameScreen.aiTurn == true) { objectX -= 4; } else { objectX += 4; }
             e.Graphics.DrawString(mega.name + " used Baka!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0);
             e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, mega.objectX, mega.objectY, mega.objectSize, mega.objectSize);
             GameScreen.AttackEndDetails();

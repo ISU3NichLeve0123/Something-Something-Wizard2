@@ -59,7 +59,7 @@
             // mainMenuButton
             // 
             this.mainMenuButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainMenuButton.Location = new System.Drawing.Point(632, 384);
+            this.mainMenuButton.Location = new System.Drawing.Point(587, 373);
             this.mainMenuButton.Name = "mainMenuButton";
             this.mainMenuButton.Size = new System.Drawing.Size(149, 66);
             this.mainMenuButton.TabIndex = 2;
