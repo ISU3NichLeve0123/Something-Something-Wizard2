@@ -88,7 +88,7 @@ namespace Something_Something_Wizards
                 case 'c':
                     e.Handled = true;
                     keyPress = e.Handled;
-                    if (e.Handled == true && dk.mana < 10 && manaNoCheat == false && aiTurn == false
+                    if (e.Handled == true && dk.mana <= 10 && manaNoCheat == false && aiTurn == false
                         || lk.mana < 10 && manaNoCheat == false && aiTurn == false
                         || mega.mana < 10 && manaNoCheat == false && aiTurn == false)
                     {
