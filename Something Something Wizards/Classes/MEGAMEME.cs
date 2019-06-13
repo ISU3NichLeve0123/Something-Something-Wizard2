@@ -80,16 +80,20 @@ namespace Something_Something_Wizards
             public void explosion(PaintEventArgs e, MEGAMEME mega)
         {
             if (GameScreen.aiTurn == true) { objectX -= 4; } else { objectX += 4; }
-            e.Graphics.DrawString(mega.name + " used explosion!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0);
-            e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, mega.objectX, mega.objectY, mega.objectSize, mega.objectSize);
+            if (GameScreen.aiTurn == false) { e.Graphics.DrawString(mega.name + " used explosion!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0); }
+            else { e.Graphics.DrawString(GameScreen.aiMega.name + " used explosion!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0); }
+            if (GameScreen.aiTurn == true) { e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, GameScreen.aiMega.objectX, GameScreen.aiMega.objectY, GameScreen.aiMega.objectSize, GameScreen.aiMega.objectSize); }
+            else { e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, mega.objectX, mega.objectY, mega.objectSize, mega.objectSize); }
             GameScreen.AttackEndDetails();
         }
 
         public void Explosion(PaintEventArgs e, MEGAMEME mega)
         {
             if (GameScreen.aiTurn == true) { objectX -= 4; } else { objectX += 4; }
-            e.Graphics.DrawString(mega.name + " used Explosion!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0);
-            e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, mega.objectX, mega.objectY, mega.objectSize, mega.objectSize);
+            if (GameScreen.aiTurn == false) { e.Graphics.DrawString(mega.name + " used Explosion!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0); }
+            else { e.Graphics.DrawString(GameScreen.aiMega.name + " used Explosion!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0); }
+            if (GameScreen.aiTurn == true) { e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, GameScreen.aiMega.objectX, GameScreen.aiMega.objectY, GameScreen.aiMega.objectSize, GameScreen.aiMega.objectSize); }
+            else { e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, mega.objectX, mega.objectY, mega.objectSize, mega.objectSize); }
             GameScreen.AttackEndDetails();
         }
 
@@ -99,15 +103,18 @@ namespace Something_Something_Wizards
             if (GameScreen.aiTurn == false) { e.Graphics.DrawString(mega.name + " used EXPLOSION!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0); }
             else { e.Graphics.DrawString(GameScreen.aiMega.name + " used EXPLOSION!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0); }
             if (GameScreen.aiTurn == false) { e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, mega.objectX, mega.objectY, mega.objectSize, mega.objectSize); }
-            else { e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, objectX, mega.objectY, mega.objectSize, mega.objectSize); }
+            else { e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, GameScreen.aiMega.objectX, GameScreen.aiMega.objectY, GameScreen.aiMega.objectSize, GameScreen.aiMega.objectSize); }
             GameScreen.AttackEndDetails();
         }
 
         public void Baka(PaintEventArgs e, MEGAMEME mega)
         {
+
             if (GameScreen.aiTurn == true) { objectX -= 4; } else { objectX += 4; }
-            e.Graphics.DrawString(mega.name + " used Baka!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0);
-            e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, mega.objectX, mega.objectY, mega.objectSize, mega.objectSize);
+            if (GameScreen.aiTurn == false) { e.Graphics.DrawString(mega.name + " used Baka!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0); }
+            else { e.Graphics.DrawString(GameScreen.aiMega.name + " Baka!", GameScreen.drawFont, GameScreen.drawBrush, 200, 0); }
+            if (GameScreen.aiTurn == false) { e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, mega.objectX, mega.objectY, mega.objectSize, mega.objectSize); }
+            else { e.Graphics.DrawImage(Properties.Resources.Wizardry_Logo, GameScreen.aiMega.objectX, GameScreen.aiMega.objectY, GameScreen.aiMega.objectSize, GameScreen.aiMega.objectSize); }
             GameScreen.AttackEndDetails();
         }
     }

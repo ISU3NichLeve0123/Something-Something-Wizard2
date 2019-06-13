@@ -12,10 +12,12 @@ namespace Something_Something_Wizards
 {
     public partial class GameScreen : UserControl
     {   //Bool variables for various uses
-        public static bool aiTurn, manaNoCheat, keyPress, attackPhase, possibleAttacks, attackInMotion, passPhase, insufficientMana;
+        public static bool randomlyGeneratedAttack, aiTurn, manaNoCheat, keyPress, attackPhase, possibleAttacks, 
+        attackInMotion, passPhase, insufficientMana;
         //Intger variables for various uses
         int attackSelector, timer, aiAttackIndicator, aiSelectedCharcter;
-        Random bsRNG = new Random();
+        Random rngGenerator = new Random();
+        int randomAiAttack;
         //Drawing Utensils
         public static Pen drawPen = new Pen(Color.Black);
         public static Font drawFont = new Font("Arial", 30);
@@ -48,7 +50,7 @@ namespace Something_Something_Wizards
             lk.name = OrignalForm.name;
             mega.name = OrignalForm.name;
             //Resets Health
-            dk.health = 12;
+            dk.health = 20;
             lk.health = 10;
             mega.health = 10;
             aiDK.health = 20;
@@ -597,10 +599,181 @@ namespace Something_Something_Wizards
 
         private void aiPhase(PaintEventArgs e)
         {
-            //When Player is at or below 10
+            //
             switch (OrignalForm.player_Charcter)
             {
                 case 1:
+                    if (dk.health >= 13 && dk.health <= 20)
+                    {
+                        switch (aiSelectedCharcter)
+                        {
+                            case 1:
+                                if (randomlyGeneratedAttack == false)
+                                {
+                                    randomAiAttack = rngGenerator.Next(1, 5);
+                                    randomlyGeneratedAttack = true;
+                                }
+                                switch (randomAiAttack)
+                                {
+                                    case 1:
+                                        if (aiDK.mana >= 2)
+                                        {
+                                            aiAttackIndicator = 1;
+                                            aiDK.DeathEyes(e, dk);
+                                        }
+                                        else
+                                        {
+                                            notEnoughMana(e);
+                                        }
+                                        break;
+                                    case 2:
+                                        if (aiMega.mana >= 5)
+                                        {
+                                            aiAttackIndicator = 2;
+                                            aiDK.DeathHand(e, dk);
+                                        }
+                                        else
+                                        {
+                                            notEnoughMana(e);
+                                        }
+                                        break;
+                                    case 3:
+                                        if (aiMega.mana >= 10)
+                                        {
+                                            aiAttackIndicator = 3;
+                                            aiDK.DeathSword(e, dk);
+                                        }
+                                        else
+                                        {
+                                            notEnoughMana(e);
+                                        }
+                                        break;
+                                    case 4:
+                                        if (aiMega.mana >= 3)
+                                        {
+                                            aiAttackIndicator = 4;
+                                            aiDK.Shout(e, dk);
+                                        }
+                                        else
+                                        {
+                                            notEnoughMana(e);
+                                        }
+                                        break;
+                                }
+                                break;
+
+                            case 2:
+                                if (randomlyGeneratedAttack == false)
+                                {
+                                    randomAiAttack = rngGenerator.Next(1, 5);
+                                    randomlyGeneratedAttack = true;
+                                }
+                                switch (randomAiAttack)
+                                {
+                                    case 1:
+                                        if (aiMega.mana >= 2)
+                                        {
+                                            aiAttackIndicator = 1;
+                                            aiMega.explosion(e, mega);
+                                        }
+                                        else
+                                        {
+                                            notEnoughMana(e);
+                                        }
+                                        break;
+                                    case 2:
+                                        if (aiMega.mana >= 5)
+                                        {
+                                            aiAttackIndicator = 2;
+                                            aiMega.Explosion(e, mega);
+                                        }
+                                        else
+                                        {
+                                            notEnoughMana(e);
+                                        }
+                                        break;
+                                    case 3:
+                                        if (aiMega.mana >= 10)
+                                        {
+                                            aiAttackIndicator = 3;
+                                            aiMega.EXPLOSION(e, mega);
+                                        }
+                                        else
+                                        {
+                                            notEnoughMana(e);
+                                        }
+                                        break;
+                                    case 4:
+                                        if (aiMega.mana >= 3)
+                                        {
+                                            aiAttackIndicator = 4;
+                                            aiMega.Baka(e, mega);
+                                        }
+                                        else
+                                        {
+                                            notEnoughMana(e);
+                                        }
+                                        break;
+                                }
+                                break;
+
+                            case 3:
+                                 if (randomlyGeneratedAttack == false)
+                                {
+                                    randomAiAttack = rngGenerator.Next(1, 5);
+                                    randomlyGeneratedAttack = true;
+                                }
+                                switch (randomAiAttack)
+                                {
+                                    case 1:
+                                        if (aiLK.mana >= 2)
+                                        {
+                                            aiAttackIndicator = 1;
+                                            aiLK.Sparks(e, lk);
+                                        }
+                                        else
+                                        {
+                                            notEnoughMana(e);
+                                        }
+                                        break;
+                                    case 2:
+                                        if (aiLK.mana >= 5)
+                                        {
+                                            aiAttackIndicator = 2;
+                                            aiLK.Crackle(e, lk);
+                                        }
+                                        else
+                                        {
+                                            notEnoughMana(e);
+                                        }
+                                        break;
+                                    case 3:
+                                        if (aiLK.mana >= 10)
+                                        {
+                                            aiAttackIndicator = 3;
+                                            aiLK.Lighting(e, lk);
+                                        }
+                                        else
+                                        {
+                                            notEnoughMana(e);
+                                        }
+                                        break;
+                                    case 4:
+                                        if (aiLK.mana >= 3)
+                                        {
+                                            aiAttackIndicator = 4;
+                                            aiLK.Lizards(e, lk);
+                                        }
+                                        else
+                                        {
+                                            notEnoughMana(e);
+                                        }
+                                        break;
+                                }
+                                break;
+                        }
+                    }
+
                     if (dk.health <= 12 && dk.health > 10)
                     {
                         switch (aiSelectedCharcter)
@@ -841,6 +1014,10 @@ namespace Something_Something_Wizards
                         {
                             dk.mana = 10;
                         }
+                        if(aiTurn == false)
+                        {
+                            aiTurn = true;
+                        }
                         break;
                     case 2:
                         mega.mana += 3;
@@ -850,6 +1027,10 @@ namespace Something_Something_Wizards
                         {
                             mega.mana = 10;
                         }
+                        if (aiTurn == false)
+                        {
+                            aiTurn = true;
+                        }
                         break;
                     case 3:
                         lk.mana += 3;
@@ -857,6 +1038,10 @@ namespace Something_Something_Wizards
                         if (dk.mana > 10)
                         {
                             lk.mana = 10;
+                        }
+                        if (aiTurn == false)
+                        {
+                            aiTurn = true;
                         }
                         break;
                 }
@@ -884,14 +1069,28 @@ namespace Something_Something_Wizards
                 {
                     case 1:
                         aiDK.mana += 3;
+                        if (aiDK.mana > 10)
+                        {
+                            aiDK.mana = 10;
+                        }
                         break;
                     case 2:
                         aiMega.mana += 3;
+                        if (aiMega.mana > 10)
+                        {
+                            aiMega.mana = 10;
+                        }
                         break;
                     case 3:
                         aiLK.mana += 3;
+                        if (aiLK.mana > 10)
+                        {
+                            aiLK.mana = 10;
+                        }
                         break;
                 }
+                aiTurn = false;
+                randomlyGeneratedAttack = false;
             }
 
         }
@@ -901,8 +1100,10 @@ namespace Something_Something_Wizards
             drawBrush.Color = Color.DarkSlateBlue;
             insufficientMana = false;
             possibleAttacks = false;
-            attackInMotion = true;
+            if (aiTurn == false){ attackInMotion = true; }
+            else { attackInMotion = false; }
             manaNoCheat = false;
+
         }
         //Draws what attack the player selects for the apporiate charcter and attack, this is used in Paint
         private void attackDrawer(PaintEventArgs e)
@@ -1102,7 +1303,8 @@ namespace Something_Something_Wizards
                     break;
                 case 2:
                     e.Graphics.DrawImage(Properties.Resources.Dima_is_a_shit_influence, aiMega.aiX, aiMega.aiY);
-
+                    e.Graphics.DrawString(Convert.ToString(aiMega.mana) + "/10", drawFont, manaBrush, 700, 52);
+                    e.Graphics.DrawString(Convert.ToString(aiMega.health) + "/20", drawFont, healthBrush, 700, 20);
                     break;
                 case 3:
                     e.Graphics.DrawImage(Properties.Resources.Light_Wizard, aiLK.aiX, aiLK.y);
